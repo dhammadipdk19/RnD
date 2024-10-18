@@ -1,0 +1,66 @@
+# PSNR Calculation
+def calculate_psnr(original, generated):
+    psnr_value = peak_signal_noise_ratio(original, generated)
+    return psnr_value
+
+# SSIM Calculation
+def calculate_ssim(original, generated):
+    ssim_value = structural_similarity(original, generated, multichannel=True)
+    return ssim_value
+
+# LPIPS (Learned Perceptual Image Patch Similarity)
+def calculate_lpips(original, generated, lpips_model):
+    original_tensor = torch.from_numpy(original).permute(2, 0, 1).unsqueeze(0).float()  # Convert to tensor
+    generated_tensor = torch.from_numpy(generated).permute(2, 0, 1).unsqueeze(0).float()
+    lpips_value = lpips_model(original_tensor, generated_tensor)
+    return lpips_value.item()
+
+# MAE Calculation
+def calculate_mae(true_ab, predicted_ab):
+    mae_value = torch.nn.functional.l1_loss(torch.from_numpy(true_ab), torch.from_numpy(predicted_ab)).item()
+    return mae_value
+
+# LPIPS Model for Perceptual Similarity
+lpips_model = LPIPS(net='vgg')  # Load LPIPS model (VGG backbone)
+
+def test_and_evaluate(model, dataloader, lpips_model):
+    """
+    Test the model and evaluate using PSNR, SSIM, LPIPS, and MAE.
+    """
+    model.eval()  # Set the model to evaluation mode
+    psnr_scores, ssim_scores, lpips_scores, mae_scores = [], [], [], []
+
+    with torch.no_grad():  # Disable gradient calculations for testing
+        for i, (L, ab_true) in enumerate(dataloader):
+            L = L.to('cuda' if torch.cuda.is_available() else 'cpu')  # Move to GPU if available
+            ab_true = ab_true.to('cuda' if torch.cuda.is_available() else 'cpu')
+
+            predicted_ab = model(L).cpu().numpy()  # Predict ab channels
+            ab_true = ab_true.cpu().numpy()  # Get the true ab channels
+            L = L.cpu().numpy()  # Convert L channel to NumPy array
+
+            # Convert Lab to RGB for both true and generated images
+            true_rgb = lab2rgb(L[0, 0], ab_true[0].transpose(1, 2, 0))
+            generated_rgb = lab2rgb(L[0, 0], predicted_ab[0].transpose(1, 2, 0))
+
+            # Calculate metrics
+            psnr_value = calculate_psnr(true_rgb, generated_rgb)
+            ssim_value = calculate_ssim(true_rgb, generated_rgb)
+            lpips_value = calculate_lpips(true_rgb, generated_rgb, lpips_model)
+            mae_value = calculate_mae(ab_true, predicted_ab)
+
+            psnr_scores.append(psnr_value)
+            ssim_scores.append(ssim_value)
+            lpips_scores.append(lpips_value)
+            mae_scores.append(mae_value)
+
+    # Compute average scores across all test images
+    avg_psnr = sum(psnr_scores) / len(psnr_scores)
+    avg_ssim = sum(ssim_scores) / len(ssim_scores)
+    avg_lpips = sum(lpips_scores) / len(lpips_scores)
+    avg_mae = sum(mae_scores) / len(mae_scores)
+
+    print(f'Average PSNR: {avg_psnr:.4f}')
+    print(f'Average SSIM: {avg_ssim:.4f}')
+    print(f'Average LPIPS: {avg_lpips:.4f}')
+    print(f'Average MAE: {avg_mae:.4f}')
