@@ -1,0 +1,89 @@
+import torch
+import torch.nn as nn
+import torchvision.models as models
+
+# Define a single Fusion Block
+class FusionBlock(nn.Module):
+    def __init__(self, res_channels, dense_channels, out_channels):
+        super(FusionBlock, self).__init__()
+        self.conv = nn.Conv2d(res_channels + dense_channels, out_channels, kernel_size=1)
+        self.bn = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, resnet_features, densenet_features):
+        # Concatenate along the channel dimension
+        fused_features = torch.cat([resnet_features, densenet_features], dim=1)
+        return self.relu(self.bn(self.conv(fused_features)))
+
+# Define Encoder Model using ResNet50 and DenseNet121
+class Encoder(nn.Module):
+    def __init__(self, pretrained=True):
+        super(Encoder, self).__init__()
+        # Load pretrained ResNet50 and DenseNet121
+        self.resnet = models.resnet50(pretrained=pretrained)
+        self.densenet = models.densenet121(pretrained=pretrained)
+
+        # Extract feature maps at different resolutions
+        self.resnet_layers = nn.ModuleList([nn.Sequential(*list(self.resnet.children())[:i]) for i in range(6)])  # 0 to 5
+        self.densenet_layers = nn.ModuleList([nn.Sequential(*list(self.densenet.features.children())[:i]) for i in range(6)])  # 0 to 5
+
+    def forward(self, x):
+        res_features = [layer(x) for layer in self.resnet_layers]
+        dense_features = [layer(x) for layer in self.densenet_layers]
+        return res_features, dense_features
+
+# Define Decoder Block with variable input channels
+class DecoderBlock(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super(DecoderBlock, self).__init__()
+        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
+        self.bn = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
+        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+
+    def forward(self, x):
+        x = self.upsample(x)
+        x = self.relu(self.bn(self.conv(x)))
+        return x
+
+# Define Full Encoder-Decoder Model with Fusion Blocks
+class ColorizationModel(nn.Module):
+    def __init__(self):
+        super(ColorizationModel, self).__init__()
+        self.encoder = Encoder()
+
+        # Define Fusion Blocks
+        self.fusion1 = FusionBlock(512, 256, 512)  # ResNet output 512, DenseNet output 256
+        self.fusion2 = FusionBlock(1024, 512, 768)  # Adjust channels according to layer depths
+        self.fusion3 = FusionBlock(1024, 640, 1024)  # Adjust channels according to layer depths
+        self.fusion4 = FusionBlock(2048, 1024, 1024)  # Final fusion before decoder
+
+        # Define Decoder Blocks
+        self.decoder1 = DecoderBlock(1024, 512)  # Fusion Block 4
+        self.decoder2 = DecoderBlock(1024, 256)  # Fusion Block 3 + output from decoder1
+        self.decoder3 = DecoderBlock(512, 128)   # Fusion Block 2 + output from decoder2
+        self.decoder4 = DecoderBlock(256, 64)    # Fusion Block 1 + output from decoder3
+        self.final_conv = nn.Conv2d(64, 2, kernel_size=3, padding=1)  # Output L/a,b
+
+    def forward(self, x):
+        # Pass through encoder
+        res_features, dense_features = self.encoder(x)
+
+        # Fusion connections
+        fusion1_output = self.fusion1(res_features[3], dense_features[3])  # ResNet block 3 & DenseNet block 3
+        fusion2_output = self.fusion2(res_features[4], dense_features[4])  # ResNet block 4 & DenseNet block 4
+        fusion3_output = self.fusion3(res_features[5], dense_features[5])  # ResNet block 5 & DenseNet block 5
+        fusion4_output = self.fusion4(fusion1_output, fusion2_output)     # Combine outputs of Fusion Block 1 and 2
+
+        # Decode with skip connections
+        x = self.decoder1(fusion4_output)  # From FusionBlock 4
+        x = self.decoder2(torch.cat([x, fusion3_output], dim=1))  # Skip connection from FusionBlock 3
+        x = self.decoder3(torch.cat([x, fusion2_output], dim=1))  # Skip connection from FusionBlock 2
+        x = self.decoder4(torch.cat([x, fusion1_output], dim=1))  # Skip connection from FusionBlock 1
+        x = self.final_conv(x)  # Final output layer
+
+        return x  # Output L/a,b channels
+
+# Instantiate and print model summary
+model = ColorizationModel()
+print(model)
