@@ -199,14 +199,10 @@ The performance of the automatic colorization model was evaluated on a variety o
 
 - **CIFAR10 (Concatenation Fusion Technique)**:
   
-| Image                                             | Metrics                                    |
-|---------------------------------------------------|--------------------------------------------|
-| <img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="800" />      | 
-|                                                   | **Metric** | **Value**                     |
-|                                                   | MSE        | 0.022                         |
-|                                                   | PSNR       | 30.15 dB                      |
-|                                                   | SSIM       | 0.90                          |
-|                                                   | LPIPS      | 0.056                         |
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="800" />
+</p>
+
 
 
 
