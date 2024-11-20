@@ -204,90 +204,77 @@ The performance of the automatic colorization model was evaluated on a variety o
 - **CIFAR10 (Concatenation Fusion Technique)**:
   
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="800" />
+  <img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="700" />
 </p>
 
-<div style="text-align: center;">
   | Metric             | Value     |
   |--------------------|-----------|
   | **MSE**            | 0.022     |
   | **PSNR**           | 30.15 dB  |
   | **SSIM**           | 0.90      |
   | **LPIPS**          | 0.056     |
-</div>
 
 - **CIFAR10 (Average Fusion Technique)**:
   
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/336da002-ebe7-44dd-a652-d08fee4376b1" width="800" />
+  <img src="https://github.com/user-attachments/assets/336da002-ebe7-44dd-a652-d08fee4376b1" width="700" />
 </p>
 
-<div style="text-align: center;">
   | Metric             | Value     |
   |--------------------|-----------|
   | **MSE**            | 0.022     |
   | **PSNR**           | 30.15 dB  |
   | **SSIM**           | 0.90      |
   | **LPIPS**          | 0.056     |
-</div>
 
 - **CIFAR10 (Max Fusion Technique)**:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3b4d2428-647f-4e2f-bd21-49fe2d0498a1" width="800" />
+  <img src="https://github.com/user-attachments/assets/3b4d2428-647f-4e2f-bd21-49fe2d0498a1" width="700" />
 </p>
 
-<div style="text-align: center;">
   | Metric             | Value     |
   |--------------------|-----------|
   | **MSE**            | 0.022     |
   | **PSNR**           | 30.15 dB  |
   | **SSIM**           | 0.90      |
   | **LPIPS**          | 0.056     |
-</div>
 
 The Concatenation fusion technique yields slightly better results, making it our preferred fusion strategy for the remaining work.
 
 - **DIV2K (Concatenation)**:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/26bfc0ce-6362-4834-9a02-667c5016d123" width="800" />
+  <img src="https://github.com/user-attachments/assets/26bfc0ce-6362-4834-9a02-667c5016d123" width="700" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/51ba9d70-3389-4d3d-bf83-0ae2561c728c" width="800" />
+  <img src="https://github.com/user-attachments/assets/51ba9d70-3389-4d3d-bf83-0ae2561c728c" width="700" />
 </p>
 
-<div style="text-align: center;">
   | Metric             | Value     |
   |--------------------|-----------|
   | **MSE**            | 0.022     |
   | **PSNR**           | 30.15 dB  |
   | **SSIM**           | 0.90      |
   | **LPIPS**          | 0.056     |
-</div>
 
 - **CIFAR10 (Real-ESRGAN+ Enhanced Dataset - Concatenation)**:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/405f4976-e8c9-43e3-bdae-82d58bf1ab98" width="800" />
+  <img src="https://github.com/user-attachments/assets/405f4976-e8c9-43e3-bdae-82d58bf1ab98" width="700" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ada1e981-d8f0-44c1-8733-8449ed7e4aae" width="800" />
+  <img src="https://github.com/user-attachments/assets/ada1e981-d8f0-44c1-8733-8449ed7e4aae" width="700" />
 </p>
 
-<div style="text-align: center;">
   | Metric             | Value     |
   |--------------------|-----------|
   | **MSE**            | 0.022     |
   | **PSNR**           | 30.15 dB  |
   | **SSIM**           | 0.90      |
   | **LPIPS**          | 0.056     |
-</div>
-
-
-
 
 
 ---
