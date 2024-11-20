@@ -209,10 +209,10 @@ The performance of the automatic colorization model was evaluated on a variety o
 
   | Metric             | Value     |
   |--------------------|-----------|
-  | **MSE**            | 0.022     |
-  | **PSNR**           | 30.15 dB  |
-  | **SSIM**           | 0.90      |
-  | **LPIPS**          | 0.056     |
+  | **MSE**            | 0.003     |
+  | **PSNR**           | 24.8253 dB  |
+  | **SSIM**           | 0.9554      |
+  | **LPIPS**          | 0.1236     |
 
 - **CIFAR10 (Average Fusion Technique)**:
   
@@ -222,10 +222,10 @@ The performance of the automatic colorization model was evaluated on a variety o
 
   | Metric             | Value     |
   |--------------------|-----------|
-  | **MSE**            | 0.022     |
-  | **PSNR**           | 30.15 dB  |
-  | **SSIM**           | 0.90      |
-  | **LPIPS**          | 0.056     |
+  | **MSE**            | 0.004    |
+  | **PSNR**           | 24.8119 dB  |
+  | **SSIM**           | 0.9537      |
+  | **LPIPS**          | 0.1227     |
 
 - **CIFAR10 (Max Fusion Technique)**:
 
@@ -235,12 +235,12 @@ The performance of the automatic colorization model was evaluated on a variety o
 
   | Metric             | Value     |
   |--------------------|-----------|
-  | **MSE**            | 0.022     |
-  | **PSNR**           | 30.15 dB  |
-  | **SSIM**           | 0.90      |
-  | **LPIPS**          | 0.056     |
+  | **MSE**            | 0.004     |
+  | **PSNR**           | 24.7831 dB  |
+  | **SSIM**           | 0.9544     |
+  | **LPIPS**          | 0.1257     |
 
-The Concatenation fusion technique yields slightly better results, making it our preferred fusion strategy for the remaining work.
+### The Concatenation fusion technique yields slightly better results, making it our preferred fusion strategy for the remaining work.
 
 - **DIV2K (Concatenation)**:
 
@@ -254,10 +254,10 @@ The Concatenation fusion technique yields slightly better results, making it our
 
   | Metric             | Value     |
   |--------------------|-----------|
-  | **MSE**            | 0.022     |
-  | **PSNR**           | 30.15 dB  |
-  | **SSIM**           | 0.90      |
-  | **LPIPS**          | 0.056     |
+  | **MSE**            | 0.024     |
+  | **PSNR**           | 27.9530 dB  |
+  | **SSIM**           | 0.9119      |
+  | **LPIPS**          | 0.0735     |
 
 - **CIFAR10 (Real-ESRGAN+ Enhanced Dataset - Concatenation)**:
 
@@ -271,10 +271,10 @@ The Concatenation fusion technique yields slightly better results, making it our
 
   | Metric             | Value     |
   |--------------------|-----------|
-  | **MSE**            | 0.022     |
-  | **PSNR**           | 30.15 dB  |
-  | **SSIM**           | 0.90      |
-  | **LPIPS**          | 0.056     |
+  | **MSE**            | 0.0017    |
+  | **PSNR**           | 28.2752 dB  |
+  | **SSIM**           | 0.9006      |
+  | **LPIPS**          | 0.0840    |
 
 
 ---
