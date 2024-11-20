@@ -9,7 +9,7 @@ This repository provides an advanced solution for the automatic colorization of 
 2. [Previous Work](#previous-work)
 3. [Data Collection](#data-collection)
 4. [Data Preprocessing](#data-preprocessing)
-5. [Model Selection](#model-selection)
+5. [Model Architecture](#model-architecture)
 6. [Model Training and Hyperparameter Tuning](#model-training-and-hyperparameter-tuning)
 7. [Model Evaluation](#model-evaluation)
 8. [Comparison Across Models](#comparison-across-models)
@@ -59,15 +59,41 @@ The a and b channels were scaled to a standard range to facilitate efficient and
 *Splitting into Train, Validation, and Test Sets*:
 The dataset was split into training, validation, and test sets to ensure unbiased evaluation and effective tuning of model parameters.
 
-## Model Selection
+## Model Architecture
 
-The following machine learning models were considered for forecasting electricity demand:
+The architecture for this project is specifically designed to address the challenges of automatic colorization by leveraging deep learning techniques and advanced feature extraction mechanisms. Below is an overview of the main components of the model architecture, followed by the preprocessing pipeline utilizing Real-ESRGAN+.
 
-1. *XGBoost (Extreme Gradient Boosting):* A powerful ensemble method that combines multiple weak learners (decision trees) to form a strong learner.
-2. *Recurrent Neural Networks (RNN):* A type of neural network designed for sequence prediction problems.
-3. *Long Short-Term Memory (LSTM):* A variant of RNN that helps address the vanishing gradient problem and captures long-range dependencies.
-4. *Gated Recurrent Unit (GRU):* A simpler variant of LSTM that uses fewer parameters but still performs well on time-series tasks.
-5. *Transformer Model:* A state-of-the-art model based on self-attention mechanisms, typically used for sequence-to-sequence tasks.
+### Automatic Colorization Model
+The model consists of the following key elements:
+
+*Feature Extraction*:
+ResNet50 and DenseNet121 are used as dual feature extractors. These architectures extract rich and diverse features from the grayscale L channel input, enabling the model to effectively capture spatial and contextual information.
+
+*Fusion Blocks*:
+Four fusion blocks combine features from ResNet50 and DenseNet121, merging their outputs to create a comprehensive feature representation.
+Skip connections are incorporated to preserve low-level details and enhance gradient flow.
+
+*Decoder Blocks*:
+The decoder network reconstructs the a and b channels from the fused features.
+Each decoder block consists of 2D convolutions, batch normalization, ReLU activation, and upsampling layers to restore the resolution.
+Skip connections link specific fusion blocks to decoder blocks for better reconstruction of finer details.
+
+*Output*:
+The model predicts the a and b channels in the LAB color space. These outputs, combined with the original L channel input, produce the final colorized image.
+A visual representation of the model architecture is included below.
+![image](https://github.com/user-attachments/assets/e9bd0990-abf4-4eeb-9152-b4d929c6be55)
+
+### Real-ESRGAN+ Pipeline
+To enhance the clarity and quality of low-resolution images before feeding them into the colorization model, Real-ESRGAN+ is integrated into the preprocessing pipeline. This step ensures that:
+
+Images smaller than 224x224 are enhanced and upscaled while preserving details.
+The enhanced images are subsequently resized to 224x224, maintaining consistency across the dataset.
+The Real-ESRGAN+ pipeline complements the automatic colorization model by ensuring high-quality inputs, thereby improving the overall performance of the system.
+
+A visual representation of the Real-ESRGAN+ architecture is included below.
+![image](https://github.com/user-attachments/assets/e61a389d-1ede-40bf-87dd-06257d9265a5)
+
+
 
 ## Model Training and Hyperparameter Tuning
 
