@@ -10,7 +10,7 @@ This repository provides an advanced solution for the automatic colorization of 
 3. [Data Collection](#data-collection)
 4. [Data Preprocessing](#data-preprocessing)
 5. [Model Architecture](#model-architecture)
-6. [Model Training and Hyperparameter Tuning](#model-training-and-hyperparameter-tuning)
+6. [Model Training](#model-training)
 7. [Model Evaluation](#model-evaluation)
 8. [Comparison Across Models](#comparison-across-models)
 9. [Error Analysis](#error-analysis)
@@ -80,6 +80,7 @@ Skip connections link specific fusion blocks to decoder blocks for better recons
 
 *Output*:
 The model predicts the a and b channels in the LAB color space. These outputs, combined with the original L channel input, produce the final colorized image.
+
 A visual representation of the model architecture is included below.
 ![image](https://github.com/user-attachments/assets/e9bd0990-abf4-4eeb-9152-b4d929c6be55)
 
@@ -95,7 +96,7 @@ A visual representation of the Real-ESRGAN+ architecture is included below.
 
 
 
-## Model Training and Hyperparameter Tuning
+## Model Training
 
 Each model was trained using the preprocessed data. The hyperparameters for each model were tuned through techniques like grid search or random search to optimize performance. This includes adjusting the number of layers, the number of units in each layer, the learning rate, batch size, and other relevant parameters.
 
