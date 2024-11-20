@@ -128,7 +128,7 @@ To enhance the clarity and quality of low-resolution images before feeding them 
 - Images smaller than 224x224 are enhanced and upscaled while preserving details.
 - The enhanced images are subsequently resized to 224x224, maintaining consistency across the dataset.
 
-The Real-ESRGAN+ pipeline complements the automatic colorization model by ensuring high-quality inputs, thereby improving the overall performance of the system.
+The Real-ESRGAN+ pipeline complements the automatic colorization model by ensuring high-quality inputs, thereby improving the overall performance of the system. This model is implicitly integrated to the existing model. All credits goes to open source python libraries related to Real-ESRGAN+ -> basicsr, realesrgan.
 
 A visual representation of the Real-ESRGAN+ architecture is included below.  
 <p align="center">
@@ -283,23 +283,35 @@ We initially experimented with different fusion strategies—concatenation, aver
 
 ## Contributors
 
-- *Nitesh Singh Bhadouria:* Data visualisation, Models Contributed - GRU, Transformer, and Bidirectional LSTM models.
-- *Dhammadip Kamble:* Focused on Transformer model architecture and data preprocessing.
-- *Rahul Kumar:* Worked on LSTM model and data preprocessing techniques.
+- *Nitesh Singh Bhadouria:*
+   Model – Max and Average (CIFAR10)
+   Concatenation (DIV2K)
+   Model working and Training (DIV2K)
+   Testing (PIMS,LPIPS, SSIMS).
+  
+- *Dhammadip Kamble:*
+   Model – Concatenation (CIFAR10)
+   Model working and Training (CIFAR10 and DIV2K)
+   Image Enhancement (Real-ESRGAN+)
+
+- *Rahul Kumar:*
+   Data Preprocessing
+   Model – Max and Average (CIFAR10)
+   Testing (DIV2K : PIMS,LPIPS, SSIMS)
+
 
 ---
 
-Feel free to clone this repository, run the models, and explore the code to improve and customize your own automatic colorization solutions!
 
 
 ## Credits
 
 We would like to acknowledge the following papers and authors whose work contributed to the development of this project:
 
-1. **Paper Name**: *[Paper Title]*  
-   **Authors**: [Author1, Author2, Author3]  
-   **Link to Paper**: [Link to Paper](http://example.com)
+1. **Paper Name**: *[Automatic Image Colorization using Ensemble of Deep Convolutional Neural Networks]*  
+   **Authors**: [Urvi Oza, Arpit Pipara, Srimanta Mandal, Pankaj Kumar]  
+   **Link to Paper**: [Link to Paper]([http://example.com](https://ieeexplore.ieee.org/document/9864479))
 
-2. **Paper Name**: *[Paper Title]*  
-   **Authors**: [Author1, Author2]  
+2. **Paper Name**: *[Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data]*  
+   **Authors**: [Xintao Wang, Liangbin Xie, Chao Dong, Ying Shan]  
    **Link to Paper**: [Link to Paper](http://example.com)
