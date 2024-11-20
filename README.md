@@ -22,9 +22,8 @@ This repository provides an advanced solution for the automatic colorization of 
     5.2 [Real-ESRGAN+ Pipeline](#real-esrgan-pipeline)
 6. [Model Training](#model-training)
 7. [Model Evaluation](#model-evaluation)
-8. [Comparison Across Models](#comparison-across-models)
-9. [Error Analysis](#error-analysis)
-10. [Contributors](#contributors)
+8. [Results](#results)
+9. [Contributors](#contributors)
 
 ---
 
@@ -125,39 +124,68 @@ A visual representation of the Real-ESRGAN+ architecture is included below.
 
 ## Model Training
 
-Each model was trained using the preprocessed data. The hyperparameters for each model were tuned through techniques like grid search or random search to optimize performance. This includes adjusting the number of layers, the number of units in each layer, the learning rate, batch size, and other relevant parameters.
+Model training is an essential phase where the model learns to colorize grayscale images. In this project, the model is trained using the preprocessed dataset, consisting of grayscale images (L channel) as input and corresponding colorized outputs (a and b channels) in the LAB color space. The following steps and hyperparameters were used during training:
+
+### 6.1 Hyperparameters
+
+The model was trained using the following hyperparameters, which were selected based on previous research and optimized for this task:
+
+- **Batch Size**: 8  
+  A batch size of 8 was chosen to strike a balance between training speed and stability.
+  
+- **Learning Rate**: 0.01  
+  The learning rate was set at 0.01 to allow the model to converge efficiently without overshooting the optimal parameters.
+
+- **Epochs**: 3  
+  The model was trained for 3 epochs. This limited number of epochs was sufficient to demonstrate the effectiveness of the architecture, with running and validation loss being tracked for performance evaluation.
+
+- **Loss Function**:  
+  The model used L2 loss (mean squared error) for pixel-wise differences.
+
+- **Optimizer**: Adam Optimizer  
+  The Adam optimizer was used for weight updates, as it adapts the learning rate during training and improves convergence speed.
+
+### 6.2 Training Process
+
+1. **Input Data**:  
+   The preprocessed dataset (after resizing, enhancement, LAB color space conversion, and channel normalization) was fed into the model in batches of 8 images.
+   
+2. **Model Training**:  
+   The model was trained using the Adam optimizer with a learning rate of 0.01 for 3 epochs. During each epoch, the model learned to predict the a and b color channels from the grayscale L channel input.
+
+3. **Loss Tracking**:  
+   The running loss (training loss) and validation loss were tracked throughout the training process. This helped monitor the model’s performance and detect overfitting.
+
+
+---
+
 
 ## Model Evaluation
 
-The performance of each model was evaluated using the following metrics:
+The performance of the automatic colorization model was evaluated using several key metrics that assess both the accuracy of the colorization and the perceptual quality of the generated images. The following metrics were used to evaluate the model:
 
-- *R² Score:* Measures the proportion of variance in the dependent variable that is predictable from the independent variables.
-- *Root Mean Squared Error (RMSE):* A metric that indicates the average magnitude of error in the model's predictions.
-- *Mean Absolute Error (MAE):* Measures the average absolute difference between predicted and actual values.
+- **Mean Squared Error (MSE)**:  
+  This metric measures the average squared differences between the predicted color values and the ground truth. A lower MSE indicates better colorization performance.
 
-## Comparison Across Models
+- **Peak Signal-to-Noise Ratio (PSNR)**:  
+  PSNR is used to evaluate the quality of the colorized images. It compares the original and predicted images to measure how much noise is present, with higher PSNR values indicating better image quality.
+
+- **Structural Similarity Index (SSIM)**:  
+  SSIM is a perceptual metric that evaluates the similarity between the predicted and ground truth images in terms of luminance, contrast, and structure. Higher SSIM values suggest that the colorized images maintain more structural similarity with the original color images.
+
+- **Learned Perceptual Image Patch Similarity (LPIPS)**:  
+  LPIPS measures the perceptual similarity between the predicted and ground truth images. Unlike pixel-wise metrics like MSE, LPIPS evaluates the similarity based on high-level features, offering a better reflection of human perception. The metric was calculated using the APEX model for high-level feature extraction. Lower LPIPS scores indicate better perceptual quality of the colorized images.
+
+These metrics provide a comprehensive evaluation of both the quantitative and qualitative aspects of the colorization model, ensuring that the generated results are both accurate and visually appealing.
+
+---
 
 
-| Model                        | MAE      | MSE              | R²     |
-|------------------------------|----------|------------------|--------|
-| *LSTM*                     | 2110.10  | 7.42e+06         | 0.9826 |
-| *RNN*                       | 2503.22  | 1.02e+07         | 0.9761 |
-| *GRU*                       | 2968.32  | 1.40e+07         | 0.9671 |
-| *Bidirectional LSTM*        | 1792.30  | 5.76e+06         | 0.9865 |
-| *LSTM with Attention*       | 2110.10  | 7.42e+06         | 0.9826 |
-| *Stacked LSTM*              | 2042.55  | 6.92e+06         | 0.9838 |
-| *Basic Transformer*         | 1393.69  | 3.91e+06         | 0.9908 |
-| *Transformer with LSTM*     | 1310.49  | 3.22e+06         | 0.9924 |
+## Results
 
-The results show that the *Transformer with LSTM* model outperforms all other models, achieving the lowest MAE (1310.49), MSE (3.22e+06), and the highest R² score (0.9924).
+The performance of the automatic colorization model was evaluated on a variety of test images. Below is an example of a colorized image along with its corresponding evaluation metrics.
 
-## Error Analysis
-
-Error analysis was performed to understand the types of errors each model makes. For instance:
-- Some models may overestimate or underestimate electricity demand during peak hours or on weekends.
-- The models may exhibit bias toward certain time periods due to the temporal nature of the data.
-
-Understanding these errors allows for model improvements, such as adjusting the features or modifying model parameters.
+---
 
 ## Contributors
 
@@ -170,11 +198,17 @@ Understanding these errors allows for model improvements, such as adjusting the 
 
 ---
 
-Feel free to clone this repository, run the models, and explore the code to improve and customize your own short-term electricity demand forecasting solutions!
+Feel free to clone this repository, run the models, and explore the code to improve and customize your own automatic colorization solutions!
 
 
-## Work based on
+## Credits
 
-1. [Urvi Oza], [Arpit Pipara], [Srimanta Mandal], and [Pankaj Kumar],
-   (https://ieeexplore.ieee.org/document/9864479)
-   **Automatic Image Colorization using Ensemble of Deep Convolutional Neural Networks**
+We would like to acknowledge the following papers and authors whose work contributed to the development of this project:
+
+1. **Paper Name**: *[Paper Title]*  
+   **Authors**: [Author1, Author2, Author3]  
+   **Link to Paper**: [Link to Paper](http://example.com)
+
+2. **Paper Name**: *[Paper Title]*  
+   **Authors**: [Author1, Author2]  
+   **Link to Paper**: [Link to Paper](http://example.com)
