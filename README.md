@@ -283,20 +283,20 @@ We initially experimented with different fusion strategies—concatenation, aver
 ## Contributors
 
 - *Nitesh Singh Bhadouria:*
-   Model – Max and Average (CIFAR10)
-   Concatenation (DIV2K)
-   Model working and Training (DIV2K)
-   Testing (PIMS,LPIPS, SSIMS).
+   - Model – Max and Average (CIFAR10)
+   - Concatenation (DIV2K)
+   - Model working and Training (DIV2K)
+   - Testing (PIMS,LPIPS, SSIMS).
   
 - *Dhammadip Kamble:*
-   Model – Concatenation (CIFAR10)
-   Model working and Training (CIFAR10 and DIV2K)
-   Image Enhancement (Real-ESRGAN+)
+   - Model – Concatenation (CIFAR10)
+   - Model working and Training (CIFAR10 and DIV2K)
+   - Image Enhancement (Real-ESRGAN+)
 
 - *Rahul Kumar:*
-   Data Preprocessing
-   Model – Max and Average (CIFAR10)
-   Testing (DIV2K : PIMS,LPIPS, SSIMS)
+   - Data Preprocessing
+   - Model – Max and Average (CIFAR10)
+   - Testing (DIV2K : PIMS,LPIPS, SSIMS)
 
 
 ---
