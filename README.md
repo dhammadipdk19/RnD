@@ -277,16 +277,15 @@ The performance of the automatic colorization model was evaluated on a variety o
   | **LPIPS**          | 0.0840    |
 
 
+We initially experimented with different fusion strategies—concatenation, average, and max—to determine which provided the best results. Our findings revealed that the concatenation technique outperformed the others when applied to the 32x32 low-resolution CIFAR-10 dataset, leading us to choose it as our fusion strategy for the remaining work. The DIV2K dataset, on the other hand, delivered promising results due to its high resolution. Additionally, enhancing the CIFAR-10 dataset using Real-ESRGAN+ significantly improved the colorization performance, showing superior results compared to the original 32x32 low-resolution CIFAR-10. Based on these observations, we concluded that for low-resolution images, enhancing the dataset first yields better results before applying the fusion strategy.
+
 ---
 
 ## Contributors
 
-- *Vissapragada Sandeep:* Data visualisation, Models Contributed - GRU, Transformer, and Bidirectional LSTM models.
-- *Rohan Naskar:* Focused on Transformer model architecture and data preprocessing.
-- *Saurabh Ramdas Nevase:* Worked on LSTM model and data preprocessing techniques.
-- *Shrashank Maravi:* Contributed to the XGBoost model and Stacked LSTM model.
-- *Sugandh Kumar:* Focused on RNN and LSTM models.
-
+- *Nitesh Singh Bhadouria:* Data visualisation, Models Contributed - GRU, Transformer, and Bidirectional LSTM models.
+- *Dhammadip Kamble:* Focused on Transformer model architecture and data preprocessing.
+- *Rahul Kumar:* Worked on LSTM model and data preprocessing techniques.
 
 ---
 
