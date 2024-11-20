@@ -41,12 +41,23 @@ These datasets together provide a robust foundation for training and testing the
 
 ## Data Preprocessing
 
-Data preprocessing is an essential step to ensure the quality of input data before feeding it into machine learning models. The following steps were performed:
+Data preprocessing is a crucial step in ensuring the quality and consistency of input data for the automatic colorization model. The following steps were implemented:
 
-- *Handling Missing Data:* Missing or incomplete records were handled through imputation or removal strategies.
-- *Rolling Statistics:* Time-based features such as moving averages were computed to capture trends and seasonal effects.
-- *Time-related Features:* Features such as the hour of the day, day of the week, and seasonality indicators were extracted to help the model capture temporal patterns.
-- *Normalization/Standardization:* Input features were scaled to a common range using normalization or standardization techniques to improve model training efficiency and convergence.
+*Resizing to 224x224*:
+All images were resized to a uniform resolution of 224x224 pixels, ensuring compatibility with the model's input requirements.
+
+*Enhancing Low-Resolution Images*:
+For images with resolutions smaller than 224x224, a new dataset was created using Real-ESRGAN+ to enhance clarity and detail before resizing. This ensures that even low-quality images contribute effectively to the training process.
+
+*Conversion to LAB Color Space*:
+All RGB images were converted to the CIE LAB color space. This transformation allows the model to predict only the a and b color channels while taking the L (lightness) channel as input from the grayscale image.
+
+*Channel Normalization*:
+The L channel was normalized to a range of [0, 1] for stable input to the model.
+The a and b channels were scaled to a standard range to facilitate efficient and balanced learning during training.
+
+*Splitting into Train, Validation, and Test Sets*:
+The dataset was split into training, validation, and test sets to ensure unbiased evaluation and effective tuning of model parameters.
 
 ## Model Selection
 
