@@ -1,8 +1,8 @@
 # RnD
 
-# Short-Term Electricity Demand Forecasting
+# Automatic Image Colorization using Ensemble of Deep Convolutional Neural Networks!
 
-This repository provides a comprehensive machine learning solution for short-term electricity demand forecasting aimed at improving power grid management, preventing blackouts, and minimizing wastage. The project compares the performance of several machine learning models, including XGBoost, RNN, LSTM, GRU, Transformer, and variants, on PJM energy data. The goal is to identify the most accurate model for predicting electricity demand, taking into account various time-related factors and the intricacies of the energy consumption patterns.
+This repository provides an advanced solution for the automatic colorization of grayscale images using deep learning techniques. The project aims to transform black-and-white images into vibrant, colorized versions, leveraging cutting-edge neural network architectures and pre-trained models. The main goal is to enhance the visual appeal and utility of grayscale imagery in applications such as media restoration, photography enhancement, and historical archives.
 
 ## Table of Contents
 1. [Introduction](#introduction)
