@@ -31,10 +31,10 @@ To address this gap, this project develops the same architecture that combines R
 
 This project utilizes two datasets: CIFAR-10 and DIV2K, each offering unique characteristics that enhance the training and evaluation process for automatic colorization.
 
-### CIFAR-10:
+#### CIFAR-10:
 A widely used dataset in computer vision, CIFAR-10 consists of 60,000 low-resolution (32x32 pixels) images across 10 distinct classes. It serves as a diverse dataset, allowing the model to learn general colorization patterns across various categories like animals, vehicles, and objects.
 
-### DIV2K:
+#### DIV2K:
 This high-resolution dataset is designed for super-resolution tasks. It contains 1,000 high-quality images with resolutions up to 2K, making it ideal for training the preprocessing pipeline and fine-tuning the model on high-detail scenarios.
 
 These datasets together provide a robust foundation for training and testing the model, enabling it to handle a variety of image resolutions and visual complexities. Furthermore, images smaller than 224x224 (CIFAR10) are enhanced using Real-ESRGAN+ to ensure consistent quality and resolution before colorization.
