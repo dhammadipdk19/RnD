@@ -198,14 +198,15 @@ These metrics provide a comprehensive evaluation of both the quantitative and qu
 The performance of the automatic colorization model was evaluated on a variety of test images. Below are example of respective colorized image along with its corresponding evaluation metrics.
 
 - **CIFAR10 (Concatenation Fusion Technique)**:
-<img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="800" />
+| Image                                             | Metrics                                    |
+|---------------------------------------------------|--------------------------------------------|
+| ![Image](https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815) | 
+|                                                   | **Metric** | **Value**                           |
+|                                                   | MSE        | 0.022                                 |
+|                                                   | PSNR       | 30.15 dB                              |
+|                                                   | SSIM       | 0.90                                   |
+|                                                   | LPIPS      | 0.056                                  |
 
-| Metric             | Value     |
-|--------------------|-----------|
-| **MSE**            | 0.022     |
-| **PSNR**           | 30.15 dB  |
-| **SSIM**           | 0.90      |
-| **LPIPS**          | 0.056     |
 
 
 ---
