@@ -5,25 +5,37 @@
 This repository provides an advanced solution for the automatic colorization of grayscale images using deep learning techniques. The project aims to transform black-and-white images into vibrant, colorized versions, leveraging cutting-edge neural network architectures and pre-trained models. The main goal is to enhance the visual appeal and utility of grayscale imagery in applications such as media restoration, photography enhancement, and historical archives.
 
 ## Table of Contents
-1. [Introduction](#introduction)
-    1.1 [Project Objective](#project-objective)
+
+1. [Introduction](#introduction)  
+   1.1 [Project Objective](#project-objective)  
+
 2. [Previous Work](#previous-work)
-3. [Data Collection](#data-collection)
-    3.1 [CIFAR-10 Dataset](#cifar-10-dataset)
-    3.2 [DIV2K Dataset](#div2k-dataset)
-4. [Data Preprocessing](#data-preprocessing)
-    4.1 [Resizing to 224x224](#resizing-to-224x224)
-    4.2 [Enhancing Low-Resolution Images](#enhancing-low-resolution-images)
-    4.3 [LAB Color Space Conversion](#lab-color-space-conversion)
-    4.4 [Channel Normalization](#channel-normalization)
-    4.5 [Dataset Splitting](#dataset-splitting)
-5. [Model Architecture](#model-architecture)
-    5.1 [Automatic Colorization Model](#automatic-colorization-model)
-    5.2 [Real-ESRGAN+ Pipeline](#real-esrgan-pipeline)
+
+3. [Data Collection](#data-collection)  
+   3.1 [CIFAR-10 Dataset](#cifar-10-dataset)  
+   3.2 [DIV2K Dataset](#div2k-dataset)
+
+4. [Data Preprocessing](#data-preprocessing)  
+   4.1 [Resizing to 224x224](#resizing-to-224x224)  
+   4.2 [Enhancing Low-Resolution Images](#enhancing-low-resolution-images)  
+   4.3 [LAB Color Space Conversion](#lab-color-space-conversion)  
+   4.4 [Channel Normalization](#channel-normalization)  
+   4.5 [Dataset Splitting](#dataset-splitting)
+
+5. [Model Architecture](#model-architecture)  
+   5.1 [Automatic Colorization Model](#automatic-colorization-model)  
+   5.2 [Real-ESRGAN+ Pipeline](#real-esrgan-pipeline)
+
 6. [Model Training](#model-training)
+
 7. [Model Evaluation](#model-evaluation)
+
 8. [Results](#results)
+
 9. [Contributors](#contributors)
+
+10. [Credits](#credits)
+
 
 ---
 
