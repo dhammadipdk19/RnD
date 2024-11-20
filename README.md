@@ -6,8 +6,7 @@ This repository provides an advanced solution for the automatic colorization of 
 
 ## Table of Contents
 
-1. [Introduction](#introduction)  
-   1.1 [Project Objective](#project-objective)  
+1. [Introduction](#introduction) 
 
 2. [Previous Work](#previous-work)
 
@@ -310,8 +309,8 @@ We would like to acknowledge the following papers and authors whose work contrib
 
 1. **Paper Name**: *[Automatic Image Colorization using Ensemble of Deep Convolutional Neural Networks]*  
    **Authors**: [Urvi Oza, Arpit Pipara, Srimanta Mandal, Pankaj Kumar]  
-   **Link to Paper**: [Link to Paper]([http://example.com](https://ieeexplore.ieee.org/document/9864479))
+   **Link to Paper**: [Link to Paper](https://ieeexplore.ieee.org/document/9864479)
 
 2. **Paper Name**: *[Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data]*  
    **Authors**: [Xintao Wang, Liangbin Xie, Chao Dong, Ying Shan]  
-   **Link to Paper**: [Link to Paper](http://example.com)
+   **Link to Paper**: [Link to Paper](https://arxiv.org/pdf/2107.10833)
