@@ -1,4 +1,4 @@
-# RnD
+# Team - RnD
 
 # Automatic Image Colorization using Ensemble of Deep Convolutional Neural Networks!
 
@@ -19,20 +19,25 @@ This repository provides an advanced solution for the automatic colorization of 
 
 ## Introduction
 
-Accurate short-term electricity demand forecasting is crucial for effective grid management, enabling utilities to balance supply and demand efficiently. By predicting electricity demand in the near future, this model helps utilities avoid blackouts and reduce wastage by adjusting generation or distribution strategies in real-time.
+This project focuses on the automatic colorization of grayscale images, combining advanced deep learning techniques and innovative preprocessing strategies. The model architecture incorporates ResNet50 and DenseNet121 for feature extraction, fusion blocks for effective feature merging, and decoder blocks for high-quality reconstruction. To ensure input images meet the required resolution of 224x224 pixels, we have utilized Real-ESRGAN+ for super-resolution enhancement. This step generates a new, high-quality dataset from smaller images, enabling the model to maintain superior colorization performance. The project aims to restore vibrancy and realism to grayscale images, with potential applications in media restoration, photography, and beyond.
 
 ## Previous Work
 
-The previous study compared several machine learning models, such as Stacked LSTM, XGBoost, and Deep RNN, for short-term electricity demand forecasting using PJM energy data. The model performance was evaluated using the following metrics:
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- R² score
+Previous studies on automatic colorization have explored various architectures, with many focusing on models that utilize feature extractors like ResNet and DenseNet alongside decoder networks. However, a significant limitation of these studies was the unavailability of open-source implementations for such architectures, making replication and further innovation challenging.
 
-The focus of the study was to evaluate how internal architecture and hyperparameters impact the forecasting accuracy. The results suggested that LSTM-based models outperform XGBoost and RNN models in terms of prediction accuracy.
+To address this gap, this project develops the same architecture that combines ResNet50 and DenseNet121 for feature extraction, fusion blocks for feature merging, and decoder blocks for high-quality colorization. The architecture is carefully designed to balance computational efficiency and output quality, enabling it to achieve competitive results in image colorization tasks.
 
 ## Data Collection
 
-The dataset used in this project is the PJM energy data, which includes historical electricity demand patterns. This data serves as the foundation for training and testing the machine learning models. The data includes time-stamped records of electricity consumption, which are key for training time-series forecasting models.
+This project utilizes two datasets: CIFAR-10 and DIV2K, each offering unique characteristics that enhance the training and evaluation process for automatic colorization.
+
+### CIFAR-10:
+A widely used dataset in computer vision, CIFAR-10 consists of 60,000 low-resolution (32x32 pixels) images across 10 distinct classes. It serves as a diverse dataset, allowing the model to learn general colorization patterns across various categories like animals, vehicles, and objects.
+
+### DIV2K:
+This high-resolution dataset is designed for super-resolution tasks. It contains 1,000 high-quality images with resolutions up to 2K, making it ideal for training the preprocessing pipeline and fine-tuning the model on high-detail scenarios.
+
+These datasets together provide a robust foundation for training and testing the model, enabling it to handle a variety of image resolutions and visual complexities. Furthermore, images smaller than 224x224 (CIFAR10) are enhanced using Real-ESRGAN+ to ensure consistent quality and resolution before colorization.
 
 ## Data Preprocessing
 
