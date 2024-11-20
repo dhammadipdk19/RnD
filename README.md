@@ -92,7 +92,7 @@ All RGB images were converted to the CIE LAB color space. This transformation al
 
 ### 4.5 Dataset Splitting
 
-The dataset was split into training, validation, and test sets to ensure unbiased evaluation and effective tuning of model parameters.
+The dataset was split into training, and test sets to ensure unbiased evaluation and effective tuning of model parameters.
 
 ---
 
@@ -195,7 +195,17 @@ These metrics provide a comprehensive evaluation of both the quantitative and qu
 
 ## Results
 
-The performance of the automatic colorization model was evaluated on a variety of test images. Below is an example of a colorized image along with its corresponding evaluation metrics.
+The performance of the automatic colorization model was evaluated on a variety of test images. Below are example of respective colorized image along with its corresponding evaluation metrics.
+
+- **CIFAR10 (Concatenation Fusion Technique)**:
+<img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="400" />
+| Metric             | Value     |
+|--------------------|-----------|
+| **MSE**            | 0.022     |
+| **PSNR**           | 30.15 dB  |
+| **SSIM**           | 0.90      |
+| **LPIPS**          | 0.056     |
+
 
 ---
 
