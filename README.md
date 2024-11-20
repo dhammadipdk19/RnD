@@ -201,7 +201,7 @@ The performance of the automatic colorization model was evaluated on a variety o
   
 | Image                                             | Metrics                                    |
 |---------------------------------------------------|--------------------------------------------|
-| ![Image](https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815)      | 
+| <img src="https://github.com/user-attachments/assets/434c5599-76cf-4a80-b347-c87d54119815" width="800" />      | 
 |                                                   | **Metric** | **Value**                     |
 |                                                   | MSE        | 0.022                         |
 |                                                   | PSNR       | 30.15 dB                      |
