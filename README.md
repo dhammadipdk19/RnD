@@ -288,7 +288,7 @@ We initially experimented with different fusion strategies—concatenation, aver
    - Model – Max and Average (CIFAR10)
    - Concatenation (DIV2K)
    - Model working and Training (DIV2K)
-   - Testing (PIMS,LPIPS, SSIMS).
+   - Testing (PSNR,LPIPS, SSIMS).
   
 - *Dhammadip Kamble:*
    - Model – Concatenation (CIFAR10)
@@ -298,7 +298,7 @@ We initially experimented with different fusion strategies—concatenation, aver
 - *Rahul Kumar:*
    - Data Preprocessing
    - Model – Max and Average (CIFAR10)
-   - Testing (DIV2K : PIMS,LPIPS, SSIMS)
+   - Testing (DIV2K : PSNR,LPIPS, SSIMS)
 
 
 ---
